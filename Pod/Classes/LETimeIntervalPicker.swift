@@ -34,6 +34,19 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         setPickerToTimeInterval(interval, animated: true)
     }
     
+    //Set Mode Methods
+    public enum LETMode {
+        case hoursMinutesSeconds
+        case minutesSeconds
+        case seconds
+    }
+    
+    private var currentMode = LETMode.hoursMinutesSeconds // Default Mode
+    
+    public func mode(newMode : LETMode) {
+        currentMode = newMode
+    }
+
     // Note that setting a font that makes the picker wider
     // than this view can cause layout problems
     public var font = UIFont.systemFontOfSize(17) {
