@@ -55,8 +55,8 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     
     // MARK: - Initialization
     
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required public init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
         setup()
     }
     
@@ -220,7 +220,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     public func pickerView(pickerView: UIPickerView,
         viewForRow row: Int,
         forComponent component: Int,
-        reusingView view: UIView!) -> UIView {
+        reusingView view: UIView?) -> UIView {
             
             // Check if view can be reused
             var newView = view
@@ -236,13 +236,13 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
                 label.textAlignment = .Right
                 label.adjustsFontSizeToFitWidth = false
                 label.frame.size = CGSize(width: numberWidth, height: size.height)
-                newView.addSubview(label)
+                newView!.addSubview(label)
             }
             
-            let label = newView.subviews.first as! UILabel
+            let label = newView!.subviews.first as! UILabel
             label.text = "\(row)"
             
-            return newView
+            return newView!
     }
     
     public func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
