@@ -35,10 +35,10 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     }
     
     //Set Mode Methods
-    public enum LETMode {
-        case hoursMinutesSeconds
-        case minutesSeconds
-        case seconds
+    public enum LETMode:Int {
+        case hoursMinutesSeconds = 3
+        case minutesSeconds = 2
+        case seconds = 1
     }
     
     private var currentMode = LETMode.hoursMinutesSeconds // Default Mode
@@ -87,13 +87,24 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     }
     
     private func setupLabels() {
-        hourLabel.text = hoursString
-        addSubview(hourLabel)
-        minuteLabel.text = minutesString
-        addSubview(minuteLabel)
-        secondLabel.text = secondsString
-        addSubview(secondLabel)
-        updateLabels()
+        switch currentMode {
+        case LETMode.hoursMinutesSeconds :
+            hourLabel.text = hoursString
+            addSubview(hourLabel)
+            fallthrough
+        case LETMode.minutesSeconds:
+            minuteLabel.text = minutesString
+            addSubview(minuteLabel)
+            fallthrough
+        case LETMode.seconds:
+            secondLabel.text = secondsString
+            addSubview(secondLabel)
+            updateLabels()
+        }
+        
+       
+        
+        
     }
     
     private func updateLabels() {
