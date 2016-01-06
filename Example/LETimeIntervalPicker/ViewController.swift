@@ -11,6 +11,27 @@ import LETimeIntervalPicker
 
 class ViewController: UIViewController {
     
+    @IBAction func act_changeMode(sender: AnyObject) {
+        switch seg_mode.selectedSegmentIndex {
+        case 0:
+            print("hours")
+            picker.updateMode(LETimeIntervalPicker.LETMode.hoursMinutesSeconds)
+            break
+        case 1:
+            print("minutes")
+            picker.updateMode(LETimeIntervalPicker.LETMode.minutesSeconds)
+            break
+        case 2:
+            print("seconds")
+            picker.updateMode(LETimeIntervalPicker.LETMode.seconds)
+            break
+        
+        default:
+            print("nothing selected")
+        }
+    }
+    
+    
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var picker: LETimeIntervalPicker!
     @IBOutlet weak var animated: UISwitch!

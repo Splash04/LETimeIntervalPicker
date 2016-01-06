@@ -43,7 +43,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     
     private var currentMode = LETMode.hoursMinutesSeconds // Default Mode
     
-    public func mode(newMode : LETMode) {
+    public func updateMode(newMode : LETMode) {
         currentMode = newMode
     }
 
