@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var picker: LETimeIntervalPicker!
     @IBOutlet weak var animated: UISwitch!
     
+    @IBOutlet weak var seg_mode: UISegmentedControl!
     let formatter = NSDateComponentsFormatter()
     
     override func viewDidLoad() {

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="us4-f0-PRu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="us4-f0-PRu">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--LETimeIntervalPicker-->
@@ -11,19 +13,22 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="lz1-yp-lgX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="cyX-iM-hVD">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Kh9-Me-t44" style="IBUITableViewCellStyleDefault" id="h0m-Wl-xzr">
+                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h0m-Wl-xzr" id="dPC-0z-VDF">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Regular" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kh9-Me-t44">
+                                                    <rect key="frame" x="15" y="0.0" width="550" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -33,14 +38,17 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="mbg-Fb-Bpd" style="IBUITableViewCellStyleDefault" id="GQj-tW-RdJ">
+                                        <rect key="frame" x="0.0" y="143" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GQj-tW-RdJ" id="z40-aH-f2c">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Inside UITableView" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mbg-Fb-Bpd">
+                                                    <rect key="frame" x="15" y="0.0" width="550" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -72,22 +80,26 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="j6f-xk-te3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="1Gj-F5-bTM">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="KT6-iu-ezF" detailTextLabel="JUh-bM-8FN" style="IBUITableViewCellStyleValue1" id="ga2-Iw-FdD">
+                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ga2-Iw-FdD" id="mdZ-co-1wS">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Time interval" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KT6-iu-ezF">
+                                                    <rect key="frame" x="15" y="12" width="93.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JUh-bM-8FN">
+                                                    <rect key="frame" x="543.5" y="12" width="41.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -97,8 +109,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="216" id="T90-xF-RNF">
+                                        <rect key="frame" x="0.0" y="143" width="600" height="216"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T90-xF-RNF" id="jRs-Rg-J4i">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="215.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WhD-O9-WUc" customClass="LETimeIntervalPicker" customModule="LETimeIntervalPicker">
@@ -173,58 +187,98 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TVf-No-M6a" userLabel="Top View">
+                                <rect key="frame" x="0.0" y="64" width="600" height="120"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q8h-R5-9iX">
+                                        <rect key="frame" x="541" y="9" width="51" height="31"/>
+                                    </switch>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXe-Fx-Zqd">
+                                        <rect key="frame" x="10" y="10" width="600" height="30"/>
+                                        <state key="normal" title="Set random time">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="setRandomTimeInterval" destination="xWm-fz-wed" eventType="touchUpInside" id="o9F-lc-7Pz"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animated" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfz-xV-Kdl">
+                                        <rect key="frame" x="-69" y="15" width="600" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Time Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIZ-7x-dMk">
+                                        <rect key="frame" x="10" y="50.5" width="600" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="020-FY-Idj">
+                                        <rect key="frame" x="387" y="47" width="203" height="29"/>
+                                        <segments>
+                                            <segment title="Hours"/>
+                                            <segment title="Minutes"/>
+                                            <segment title="Seconds"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="020-FY-Idj" firstAttribute="trailing" secondItem="q8h-R5-9iX" secondAttribute="trailing" id="4tH-5P-fLc"/>
+                                    <constraint firstItem="kIZ-7x-dMk" firstAttribute="top" secondItem="hfz-xV-Kdl" secondAttribute="bottom" constant="15" id="9LX-tP-rS7"/>
+                                    <constraint firstItem="kIZ-7x-dMk" firstAttribute="width" secondItem="TVf-No-M6a" secondAttribute="width" id="GRN-m8-aKo"/>
+                                    <constraint firstAttribute="trailing" secondItem="hfz-xV-Kdl" secondAttribute="trailing" constant="10" id="J9E-Lg-cDs"/>
+                                    <constraint firstItem="kIZ-7x-dMk" firstAttribute="leading" secondItem="eXe-Fx-Zqd" secondAttribute="leading" id="Plj-RA-pmh"/>
+                                    <constraint firstItem="q8h-R5-9iX" firstAttribute="leading" secondItem="hfz-xV-Kdl" secondAttribute="trailing" constant="10" id="QNk-Tm-3ym"/>
+                                    <constraint firstItem="020-FY-Idj" firstAttribute="centerY" secondItem="kIZ-7x-dMk" secondAttribute="centerY" id="WSS-YO-7mT"/>
+                                    <constraint firstAttribute="trailing" secondItem="q8h-R5-9iX" secondAttribute="trailing" constant="10" id="YNz-xW-q9S"/>
+                                    <constraint firstItem="q8h-R5-9iX" firstAttribute="centerY" secondItem="eXe-Fx-Zqd" secondAttribute="centerY" id="fNo-wo-rrK"/>
+                                    <constraint firstItem="hfz-xV-Kdl" firstAttribute="width" secondItem="TVf-No-M6a" secondAttribute="width" id="hEM-8d-WYw"/>
+                                    <constraint firstItem="eXe-Fx-Zqd" firstAttribute="leading" secondItem="TVf-No-M6a" secondAttribute="leading" constant="10" id="myt-DF-3kq"/>
+                                    <constraint firstItem="eXe-Fx-Zqd" firstAttribute="width" secondItem="TVf-No-M6a" secondAttribute="width" id="nJW-SL-bT3"/>
+                                    <constraint firstItem="eXe-Fx-Zqd" firstAttribute="top" secondItem="TVf-No-M6a" secondAttribute="top" constant="10" id="pwC-Ag-zvR"/>
+                                    <constraint firstItem="hfz-xV-Kdl" firstAttribute="centerY" secondItem="eXe-Fx-Zqd" secondAttribute="centerY" id="vbl-Ud-4dv"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="J9E-Lg-cDs"/>
+                                    </mask>
+                                </variation>
+                            </view>
                             <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="N37-Fe-dsf" customClass="LETimeIntervalPicker" customModule="LETimeIntervalPicker">
-                                <rect key="frame" x="0.0" y="110" width="600" height="441.5"/>
+                                <rect key="frame" x="0.0" y="184" width="600" height="367.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="updateLabel:" destination="xWm-fz-wed" eventType="valueChanged" id="uLZ-nh-rE0"/>
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Pick a time interval" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvd-9c-DfN">
-                                <rect key="frame" x="227" y="559" width="145" height="20.5"/>
+                                <rect key="frame" x="228" y="559" width="143.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXe-Fx-Zqd">
-                                <rect key="frame" x="20" y="72" width="114" height="30"/>
-                                <state key="normal" title="Set random time">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="setRandomTimeInterval" destination="xWm-fz-wed" eventType="touchUpInside" id="o9F-lc-7Pz"/>
-                                </connections>
-                            </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q8h-R5-9iX">
-                                <rect key="frame" x="531" y="71" width="51" height="31"/>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animated" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfz-xV-Kdl">
-                                <rect key="frame" x="450" y="76.5" width="73" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eXe-Fx-Zqd" firstAttribute="baseline" secondItem="hfz-xV-Kdl" secondAttribute="baseline" id="51K-Yz-w2h"/>
                             <constraint firstItem="qvd-9c-DfN" firstAttribute="top" secondItem="N37-Fe-dsf" secondAttribute="bottom" constant="8" symbolic="YES" id="7Bc-z4-RcA"/>
-                            <constraint firstAttribute="trailing" secondItem="q8h-R5-9iX" secondAttribute="trailing" constant="20" symbolic="YES" id="Add-h0-RFf"/>
+                            <constraint firstItem="TVf-No-M6a" firstAttribute="top" secondItem="Kaz-8m-kTS" secondAttribute="bottom" id="91N-ei-8d9"/>
                             <constraint firstItem="YLU-JW-Oxb" firstAttribute="top" secondItem="qvd-9c-DfN" secondAttribute="bottom" constant="20" id="J99-Ku-ViR"/>
-                            <constraint firstItem="eXe-Fx-Zqd" firstAttribute="leading" secondItem="IjL-r7-50Q" secondAttribute="leading" constant="20" symbolic="YES" id="P0T-7P-zuN"/>
-                            <constraint firstItem="q8h-R5-9iX" firstAttribute="centerY" secondItem="eXe-Fx-Zqd" secondAttribute="centerY" constant="-0.5" id="Sbb-Sy-w82"/>
-                            <constraint firstItem="eXe-Fx-Zqd" firstAttribute="top" secondItem="Kaz-8m-kTS" secondAttribute="bottom" constant="8" symbolic="YES" id="T9g-3X-nYe"/>
                             <constraint firstAttribute="centerX" secondItem="qvd-9c-DfN" secondAttribute="centerX" id="W1g-PH-Iq2"/>
-                            <constraint firstItem="q8h-R5-9iX" firstAttribute="leading" secondItem="hfz-xV-Kdl" secondAttribute="trailing" constant="8" id="aC2-Ir-HpQ"/>
+                            <constraint firstItem="N37-Fe-dsf" firstAttribute="top" secondItem="TVf-No-M6a" secondAttribute="bottom" id="YjO-lM-h9v"/>
+                            <constraint firstItem="TVf-No-M6a" firstAttribute="centerX" secondItem="IjL-r7-50Q" secondAttribute="centerX" id="cB9-Wu-K3S"/>
+                            <constraint firstItem="TVf-No-M6a" firstAttribute="width" secondItem="IjL-r7-50Q" secondAttribute="width" id="cMf-bB-oGo"/>
                             <constraint firstAttribute="trailing" secondItem="N37-Fe-dsf" secondAttribute="trailing" id="dYU-Ic-inb"/>
                             <constraint firstItem="N37-Fe-dsf" firstAttribute="leading" secondItem="IjL-r7-50Q" secondAttribute="leading" id="i5e-Iw-5lJ"/>
-                            <constraint firstItem="N37-Fe-dsf" firstAttribute="top" secondItem="eXe-Fx-Zqd" secondAttribute="bottom" constant="8" symbolic="YES" id="pJw-2i-z3f"/>
+                            <constraint firstItem="TVf-No-M6a" firstAttribute="height" secondItem="IjL-r7-50Q" secondAttribute="height" multiplier="0.2" id="uiX-6r-S8h"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="animated" destination="q8h-R5-9iX" id="QTv-Gu-T52"/>
                         <outlet property="label" destination="qvd-9c-DfN" id="1Vt-ed-cb0"/>
                         <outlet property="picker" destination="N37-Fe-dsf" id="e0s-5k-LaZ"/>
+                        <outlet property="seg_mode" destination="020-FY-Idj" id="EEc-1B-VMU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZM-rc-3pE" sceneMemberID="firstResponder"/>
