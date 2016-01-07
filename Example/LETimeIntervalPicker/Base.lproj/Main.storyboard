@@ -221,6 +221,9 @@
                                             <segment title="Minutes"/>
                                             <segment title="Seconds"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="act_changeMode:" destination="xWm-fz-wed" eventType="valueChanged" id="oJC-Dc-8Gc"/>
+                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
