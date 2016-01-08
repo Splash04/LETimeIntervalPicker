@@ -29,7 +29,11 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
             return secondsToHoursMinutesSeconds(Int(timeInterval))
         }
     }
-
+    public var timeIntervalAsMinutesSeconds: (minutes: Int, seconds: Int) {
+        get {
+            return secondsToMinutesSeconds(Int(timeInterval))
+        }
+    }
     public func setTimeIntervalAnimated(interval: NSTimeInterval) {
         setPickerToTimeInterval(interval, animated: true)
     }
@@ -357,6 +361,9 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     
     private func secondsToHoursMinutesSeconds(seconds : Int) -> (hours: Int, minutes: Int, seconds: Int) {
         return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+    }
+    private func secondsToMinutesSeconds(seconds : Int) -> (minutes: Int, seconds: Int) {
+        return ((seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
     private enum Components: Int {
