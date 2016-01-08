@@ -102,7 +102,9 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         case LETMode.hoursMinutesSeconds :
             hourLabel.text = hoursString
             hourLabel.textColor = pickerStyle.styleFontColor
+            if currentMode == LETMode.hoursMinutesSeconds {
             addSubview(hourLabel)
+            }
             fallthrough
         case LETMode.minutesSeconds:
             minuteLabel.text = minutesString
@@ -145,13 +147,15 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         // Used to position labels
 
         totalPickerWidth = 0
-
-        let numberOfComponents:CGFloat = CGFloat(currentMode.rawValue)
+        totalPickerWidth += hourLabel.bounds.width
+        totalPickerWidth += minuteLabel.bounds.width
+        totalPickerWidth += secondLabel.bounds.width
         
-        totalPickerWidth += standardComponentSpacing * (numberOfComponents - 1)
-        totalPickerWidth += extraComponentSpacing * numberOfComponents
-        totalPickerWidth += labelSpacing * numberOfComponents
-        totalPickerWidth += numberWidth * numberOfComponents
+        
+        totalPickerWidth += standardComponentSpacing * 2
+        totalPickerWidth += extraComponentSpacing * 3
+        totalPickerWidth += labelSpacing * 3
+        totalPickerWidth += numberWidth * 3
     }
     
     func setupPickerView() {
@@ -207,7 +211,6 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
       // MARK: - Layout
     private var totalPickerWidth: CGFloat = 0
     private var numberWidth: CGFloat = 20               // Width of UILabel displaying a two digit number with standard font
-    private var numberOfComponents = 2 //default for hours, minutes, seconds TODO: Update to 3
 
     private let standardComponentSpacing: CGFloat = 5   // A UIPickerView has a 5 point space between components
     private let extraComponentSpacing: CGFloat = 10     // Add an additional 10 points between the components
@@ -217,15 +220,14 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         super.layoutSubviews()
         
         // Reposition labels
-        
+        if currentMode == LETMode.hoursMinutesSeconds {
         hourLabel.center.y = CGRectGetMidY(pickerView.frame)
+        }
         minuteLabel.center.y = CGRectGetMidY(pickerView.frame)
         secondLabel.center.y = CGRectGetMidY(pickerView.frame)
         
         let pickerMinX = CGRectGetMidX(bounds) - totalPickerWidth / 2
-        if currentMode == LETMode.hoursMinutesSeconds {
-             hourLabel.frame.origin.x = pickerMinX + numberWidth + labelSpacing
-        }
+        hourLabel.frame.origin.x = pickerMinX + numberWidth + labelSpacing
         let space = standardComponentSpacing + extraComponentSpacing + numberWidth + labelSpacing
         minuteLabel.frame.origin.x = CGRectGetMaxX(hourLabel.frame) + space
         secondLabel.frame.origin.x = CGRectGetMaxX(minuteLabel.frame) + space
@@ -234,7 +236,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     // MARK: - Picker view data source
     
     public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return currentMode.rawValue
+        return 3
     }
     
     public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -255,12 +257,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         let labelWidth: CGFloat
         switch Components(rawValue: component)! {
         case .Hour:
-            if currentMode == LETMode.hoursMinutesSeconds {
-                labelWidth = hourLabel.bounds.width
-            }
-            else {
-                labelWidth = 0
-            }
+            labelWidth = hourLabel.bounds.width
             
         case .Minute:
             labelWidth = minuteLabel.bounds.width
@@ -294,7 +291,11 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
             }
             
             let label = newView!.subviews.first as! UILabel
-            label.text = "\(row)"
+            if currentMode == LETMode.minutesSeconds && component == 0 {
+            }
+            else {
+                label.text = "\(row)"
+            }
             
             return newView!
     }
@@ -322,18 +323,25 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
             }
         }
         
-        sendActionsForControlEvents(.ValueChanged)
+        if currentMode == LETMode.minutesSeconds && component == 0 {
+        //don't allow hour to be selected.
+        }
+        else {
+         sendActionsForControlEvents(.ValueChanged)
+        }
     }
     
     // MARK: - Helpers
     
     private func setPickerToTimeInterval(interval: NSTimeInterval, animated: Bool) {
         let time = secondsToHoursMinutesSeconds(Int(interval))
+        if currentMode == LETMode.hoursMinutesSeconds {
         pickerView.selectRow(time.hours, inComponent: 0, animated: animated)
+        self.pickerView(pickerView, didSelectRow: time.hours, inComponent: 0)
+        }
         pickerView.selectRow(time.minutes, inComponent: 1, animated: animated)
         pickerView.selectRow(time.seconds, inComponent: 2, animated: animated)
-        self.pickerView(pickerView, didSelectRow: time.hours, inComponent: 0)
-        self.pickerView(pickerView, didSelectRow: time.minutes, inComponent: 1)
+            self.pickerView(pickerView, didSelectRow: time.minutes, inComponent: 1)
         self.pickerView(pickerView, didSelectRow: time.seconds, inComponent: 2)
     }
     
