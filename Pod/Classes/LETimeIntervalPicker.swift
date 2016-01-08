@@ -108,6 +108,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
             fallthrough
         case LETMode.minutesSeconds:
             minuteLabel.text = minutesString
+            minuteLabel.textColor = pickerStyle.styleFontColor
             addSubview(minuteLabel)
             secondLabel.text = secondsString
             secondLabel.textColor = pickerStyle.styleFontColor
