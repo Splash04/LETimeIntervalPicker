@@ -15,12 +15,12 @@ class ViewController: UIViewController {
         switch seg_mode.selectedSegmentIndex {
         case 0:
             print("hours")
-            picker.updateMode(LETimeIntervalPicker.LETMode.hoursMinutesSeconds)
+            picker.changeMode(LETimeIntervalPicker.LETMode.hoursMinutesSeconds)
             label.text = "Changing Mode"
             break
         case 1:
             print("minutes")
-            picker.updateMode(LETimeIntervalPicker.LETMode.minutesSeconds)
+            picker.changeMode(LETimeIntervalPicker.LETMode.minutesSeconds)
             label.text = "Changing Mode"
             break
         
