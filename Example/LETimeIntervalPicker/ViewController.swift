@@ -16,14 +16,12 @@ class ViewController: UIViewController {
         case 0:
             print("hours")
             picker.updateMode(LETimeIntervalPicker.LETMode.hoursMinutesSeconds)
+            label.text = "Changing Mode"
             break
         case 1:
             print("minutes")
             picker.updateMode(LETimeIntervalPicker.LETMode.minutesSeconds)
-            break
-        case 2:
-            print("seconds")
-            picker.updateMode(LETimeIntervalPicker.LETMode.seconds)
+            label.text = "Changing Mode"
             break
         
         default:

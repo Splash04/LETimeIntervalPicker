@@ -34,6 +34,9 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         setPickerToTimeInterval(interval, animated: true)
     }
     
+    public func resetTimetoZero(animated: Bool) {
+        setPickerToTimeInterval(NSTimeInterval(0), animated: animated)
+    }
     //Set Mode Methods
     public enum LETMode:Int {
         case hoursMinutesSeconds = 3
@@ -42,11 +45,13 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     }
     
     // Managing the current Mode for the Picker
-    private var currentMode = LETMode.minutesSeconds // Default Mode
-    private var componentsToShow:[Components] = [Components.Minute, Components.Second]
+    public var currentMode = LETMode.hoursMinutesSeconds // Default Mode
     
+    private var componentsToShow:[Components] = [Components.Hour,Components.Minute, Components.Second]
     public func updateMode(newMode : LETMode) {
         currentMode = newMode
+        cleanup() // Hour label doesn't seem to be removed when calling setup so removing them manually here
+        setup()
     }
 
     // Note that setting a font that makes the picker wider
@@ -87,7 +92,12 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         calculateTotalPickerWidth()
         setupPickerView()
     }
-    
+    private func cleanup() {
+        hourLabel.removeFromSuperview()
+        minuteLabel.removeFromSuperview()
+        secondLabel.removeFromSuperview()
+        resetTimetoZero(true)
+    }
     private func setupLabels() {
         switch currentMode {
         case LETMode.hoursMinutesSeconds :
