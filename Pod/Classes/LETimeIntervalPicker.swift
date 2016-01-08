@@ -48,7 +48,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     public var currentMode = LETMode.hoursMinutesSeconds // Default Mode
     
     private var componentsToShow:[Components] = [Components.Hour,Components.Minute, Components.Second]
-    public func updateMode(newMode : LETMode) {
+    public func changeMode(newMode : LETMode) {
         currentMode = newMode
         cleanup() // Hour label doesn't seem to be removed when calling setup so removing them manually here
         setup()
