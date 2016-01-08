@@ -187,71 +187,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TVf-No-M6a" userLabel="Top View">
-                                <rect key="frame" x="0.0" y="64" width="600" height="120"/>
-                                <subviews>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q8h-R5-9iX">
-                                        <rect key="frame" x="541" y="9" width="51" height="31"/>
-                                    </switch>
-                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXe-Fx-Zqd">
-                                        <rect key="frame" x="10" y="10" width="600" height="30"/>
-                                        <state key="normal" title="Set random time">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="setRandomTimeInterval" destination="xWm-fz-wed" eventType="touchUpInside" id="o9F-lc-7Pz"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animated" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfz-xV-Kdl">
-                                        <rect key="frame" x="-69" y="15" width="600" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Time Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIZ-7x-dMk">
-                                        <rect key="frame" x="10" y="50.5" width="600" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="020-FY-Idj">
-                                        <rect key="frame" x="387" y="47" width="203" height="29"/>
-                                        <segments>
-                                            <segment title="Hours"/>
-                                            <segment title="Minutes"/>
-                                            <segment title="Seconds"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="act_changeMode:" destination="xWm-fz-wed" eventType="valueChanged" id="oJC-Dc-8Gc"/>
-                                        </connections>
-                                    </segmentedControl>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="020-FY-Idj" firstAttribute="trailing" secondItem="q8h-R5-9iX" secondAttribute="trailing" id="4tH-5P-fLc"/>
-                                    <constraint firstItem="kIZ-7x-dMk" firstAttribute="top" secondItem="hfz-xV-Kdl" secondAttribute="bottom" constant="15" id="9LX-tP-rS7"/>
-                                    <constraint firstItem="kIZ-7x-dMk" firstAttribute="width" secondItem="TVf-No-M6a" secondAttribute="width" id="GRN-m8-aKo"/>
-                                    <constraint firstAttribute="trailing" secondItem="hfz-xV-Kdl" secondAttribute="trailing" constant="10" id="J9E-Lg-cDs"/>
-                                    <constraint firstItem="kIZ-7x-dMk" firstAttribute="leading" secondItem="eXe-Fx-Zqd" secondAttribute="leading" id="Plj-RA-pmh"/>
-                                    <constraint firstItem="q8h-R5-9iX" firstAttribute="leading" secondItem="hfz-xV-Kdl" secondAttribute="trailing" constant="10" id="QNk-Tm-3ym"/>
-                                    <constraint firstItem="020-FY-Idj" firstAttribute="centerY" secondItem="kIZ-7x-dMk" secondAttribute="centerY" id="WSS-YO-7mT"/>
-                                    <constraint firstAttribute="trailing" secondItem="q8h-R5-9iX" secondAttribute="trailing" constant="10" id="YNz-xW-q9S"/>
-                                    <constraint firstItem="q8h-R5-9iX" firstAttribute="centerY" secondItem="eXe-Fx-Zqd" secondAttribute="centerY" id="fNo-wo-rrK"/>
-                                    <constraint firstItem="hfz-xV-Kdl" firstAttribute="width" secondItem="TVf-No-M6a" secondAttribute="width" id="hEM-8d-WYw"/>
-                                    <constraint firstItem="eXe-Fx-Zqd" firstAttribute="leading" secondItem="TVf-No-M6a" secondAttribute="leading" constant="10" id="myt-DF-3kq"/>
-                                    <constraint firstItem="eXe-Fx-Zqd" firstAttribute="width" secondItem="TVf-No-M6a" secondAttribute="width" id="nJW-SL-bT3"/>
-                                    <constraint firstItem="eXe-Fx-Zqd" firstAttribute="top" secondItem="TVf-No-M6a" secondAttribute="top" constant="10" id="pwC-Ag-zvR"/>
-                                    <constraint firstItem="hfz-xV-Kdl" firstAttribute="centerY" secondItem="eXe-Fx-Zqd" secondAttribute="centerY" id="vbl-Ud-4dv"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="J9E-Lg-cDs"/>
-                                    </mask>
-                                </variation>
-                            </view>
                             <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="N37-Fe-dsf" customClass="LETimeIntervalPicker" customModule="LETimeIntervalPicker">
-                                <rect key="frame" x="0.0" y="184" width="600" height="367.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="184" width="600" height="366.5"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="updateLabel:" destination="xWm-fz-wed" eventType="valueChanged" id="uLZ-nh-rE0"/>
                                 </connections>
@@ -262,6 +200,76 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TVf-No-M6a" userLabel="Top View">
+                                <rect key="frame" x="0.0" y="64" width="600" height="120"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q8h-R5-9iX">
+                                        <rect key="frame" x="541" y="11.5" width="51" height="31"/>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animated" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfz-xV-Kdl">
+                                        <rect key="frame" x="310" y="11.5" width="221" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Time Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIZ-7x-dMk">
+                                        <rect key="frame" x="10" y="52.5" width="600" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="020-FY-Idj">
+                                        <rect key="frame" x="413" y="49" width="177" height="29"/>
+                                        <segments>
+                                            <segment title="Hrs:Min:Sec"/>
+                                            <segment title="Mins:Secs"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="act_changeMode:" destination="xWm-fz-wed" eventType="valueChanged" id="oJC-Dc-8Gc"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Wg-BH-1YR">
+                                        <rect key="frame" x="10" y="10" width="300" height="32.5"/>
+                                        <state key="normal" title="Set Random time"/>
+                                        <connections>
+                                            <action selector="setRandomTimeInterval" destination="xWm-fz-wed" eventType="touchUpInside" id="eft-fN-vL8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="q8h-R5-9iX" firstAttribute="centerY" secondItem="hfz-xV-Kdl" secondAttribute="centerY" id="257-76-CXs"/>
+                                    <constraint firstItem="kIZ-7x-dMk" firstAttribute="leading" secondItem="4Wg-BH-1YR" secondAttribute="leading" id="2tz-dd-KxU"/>
+                                    <constraint firstItem="020-FY-Idj" firstAttribute="trailing" secondItem="q8h-R5-9iX" secondAttribute="trailing" id="4tH-5P-fLc"/>
+                                    <constraint firstItem="kIZ-7x-dMk" firstAttribute="top" secondItem="hfz-xV-Kdl" secondAttribute="bottom" constant="15" id="9LX-tP-rS7"/>
+                                    <constraint firstItem="hfz-xV-Kdl" firstAttribute="leading" secondItem="4Wg-BH-1YR" secondAttribute="trailing" id="Frz-Yg-JsA"/>
+                                    <constraint firstItem="kIZ-7x-dMk" firstAttribute="width" secondItem="TVf-No-M6a" secondAttribute="width" id="GRN-m8-aKo"/>
+                                    <constraint firstItem="q8h-R5-9iX" firstAttribute="height" secondItem="hfz-xV-Kdl" secondAttribute="height" id="HUr-ef-Cof"/>
+                                    <constraint firstItem="kIZ-7x-dMk" firstAttribute="top" secondItem="4Wg-BH-1YR" secondAttribute="bottom" constant="10" id="IJe-r3-Zdk"/>
+                                    <constraint firstAttribute="trailing" secondItem="hfz-xV-Kdl" secondAttribute="trailing" constant="10" id="J9E-Lg-cDs"/>
+                                    <constraint firstItem="4Wg-BH-1YR" firstAttribute="top" secondItem="TVf-No-M6a" secondAttribute="top" constant="10" id="Jbq-6c-KkP"/>
+                                    <constraint firstItem="q8h-R5-9iX" firstAttribute="leading" secondItem="hfz-xV-Kdl" secondAttribute="trailing" constant="10" id="QNk-Tm-3ym"/>
+                                    <constraint firstItem="hfz-xV-Kdl" firstAttribute="centerY" secondItem="4Wg-BH-1YR" secondAttribute="centerY" id="RMh-pl-slR"/>
+                                    <constraint firstItem="q8h-R5-9iX" firstAttribute="centerY" secondItem="kIZ-7x-dMk" secondAttribute="centerY" id="SuE-SB-yZ9"/>
+                                    <constraint firstItem="020-FY-Idj" firstAttribute="height" secondItem="kIZ-7x-dMk" secondAttribute="height" multiplier="1.4" id="T7O-8z-A25"/>
+                                    <constraint firstItem="020-FY-Idj" firstAttribute="centerY" secondItem="kIZ-7x-dMk" secondAttribute="centerY" id="WSS-YO-7mT"/>
+                                    <constraint firstAttribute="trailing" secondItem="q8h-R5-9iX" secondAttribute="trailing" constant="10" id="YNz-xW-q9S"/>
+                                    <constraint firstItem="q8h-R5-9iX" firstAttribute="leading" secondItem="hfz-xV-Kdl" secondAttribute="trailing" constant="10" id="YcY-59-hsY"/>
+                                    <constraint firstItem="4Wg-BH-1YR" firstAttribute="leading" secondItem="TVf-No-M6a" secondAttribute="leading" constant="10" id="f0R-wk-wAX"/>
+                                    <constraint firstItem="4Wg-BH-1YR" firstAttribute="width" secondItem="TVf-No-M6a" secondAttribute="width" multiplier="0.5" id="fP7-5R-Ubh"/>
+                                    <constraint firstItem="hfz-xV-Kdl" firstAttribute="width" secondItem="TVf-No-M6a" secondAttribute="width" id="hEM-8d-WYw"/>
+                                    <constraint firstItem="020-FY-Idj" firstAttribute="top" secondItem="hfz-xV-Kdl" secondAttribute="bottom" constant="6.5" id="pFR-rs-HeM"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9LX-tP-rS7"/>
+                                        <exclude reference="J9E-Lg-cDs"/>
+                                        <exclude reference="hEM-8d-WYw"/>
+                                        <exclude reference="QNk-Tm-3ym"/>
+                                        <exclude reference="SuE-SB-yZ9"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
