@@ -41,7 +41,6 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     public enum LETMode:Int {
         case hoursMinutesSeconds = 3
         case minutesSeconds = 2
-        case seconds = 1
     }
     
     // Managing the current Mode for the Picker
@@ -108,8 +107,6 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         case LETMode.minutesSeconds:
             minuteLabel.text = minutesString
             addSubview(minuteLabel)
-            fallthrough
-        case LETMode.seconds:
             secondLabel.text = secondsString
             secondLabel.textColor = pickerStyle.styleFontColor
             addSubview(secondLabel)
@@ -122,11 +119,9 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     }
     
     private func updateLabels() {
-        if currentMode == LETMode.hoursMinutesSeconds {
-            hourLabel.font = font
-            hourLabel.sizeToFit()
-        }
         
+        hourLabel.font = font
+        hourLabel.sizeToFit()
         minuteLabel.font = font
         minuteLabel.sizeToFit()
         secondLabel.font = font
@@ -150,16 +145,6 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         // Used to position labels
 
         totalPickerWidth = 0
-        switch currentMode {
-        case LETMode.hoursMinutesSeconds:
-            totalPickerWidth += hourLabel.bounds.width
-            fallthrough
-        case LETMode.minutesSeconds:
-            totalPickerWidth += minuteLabel.bounds.width
-            fallthrough
-        case LETMode.seconds :
-            totalPickerWidth += secondLabel.bounds.width
-        }
 
         let numberOfComponents:CGFloat = CGFloat(currentMode.rawValue)
         
