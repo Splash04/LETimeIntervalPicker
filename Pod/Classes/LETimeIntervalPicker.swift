@@ -37,7 +37,8 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     public func resetTimetoZero(animated: Bool) {
         setPickerToTimeInterval(NSTimeInterval(0), animated: animated)
     }
-    //Set Mode Methods
+    
+    //Mark: Change Timer Mode Methods
     public enum LETMode:Int {
         case hoursMinutesSeconds = 3
         case minutesSeconds = 2
@@ -57,10 +58,13 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     // than this view can cause layout problems
     public var font = pickerStyle.styleSelectedFont {
         didSet {
-            updateLabels()
-            calculateNumberWidth()
-            calculateTotalPickerWidth()
-            pickerView.reloadAllComponents()
+            refreshViewAfterFormatChange()
+        }
+    }
+    
+    public var fontColor = pickerStyle.styleFontColor {
+        didSet {
+            refreshViewAfterFormatChange()
         }
     }
     
@@ -83,7 +87,12 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         super.init(frame: frame)
         setup()
     }
-    
+    private func refreshViewAfterFormatChange() {
+        updateLabels()
+        calculateNumberWidth()
+        calculateTotalPickerWidth()
+        pickerView.reloadAllComponents()
+    }
     private func setup() {
         setupLocalizations()
         setupLabels()
@@ -101,17 +110,17 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         switch currentMode {
         case LETMode.hoursMinutesSeconds :
             hourLabel.text = hoursString
-            hourLabel.textColor = pickerStyle.styleFontColor
+            hourLabel.textColor = fontColor
             if currentMode == LETMode.hoursMinutesSeconds {
             addSubview(hourLabel)
             }
             fallthrough
         case LETMode.minutesSeconds:
             minuteLabel.text = minutesString
-            minuteLabel.textColor = pickerStyle.styleFontColor
+            minuteLabel.textColor = fontColor
             addSubview(minuteLabel)
             secondLabel.text = secondsString
-            secondLabel.textColor = pickerStyle.styleFontColor
+            secondLabel.textColor = fontColor
             addSubview(secondLabel)
             updateLabels()
         }
@@ -284,7 +293,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
                 // Setup label and add as subview
                 let label = UILabel()
                 label.font = font
-                label.textColor = pickerStyle.styleFontColor
+                label.textColor = fontColor
                 label.textAlignment = .Right
                 label.adjustsFontSizeToFitWidth = false
                 label.frame.size = CGSize(width: numberWidth, height: size.height)
