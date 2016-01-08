@@ -56,7 +56,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
 
     // Note that setting a font that makes the picker wider
     // than this view can cause layout problems
-    public var font = UIFont.systemFontOfSize(17) {
+    public var font = pickerStyle.styleSelectedFont {
         didSet {
             updateLabels()
             calculateNumberWidth()
@@ -102,6 +102,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         switch currentMode {
         case LETMode.hoursMinutesSeconds :
             hourLabel.text = hoursString
+            hourLabel.textColor = pickerStyle.styleFontColor
             addSubview(hourLabel)
             fallthrough
         case LETMode.minutesSeconds:
@@ -110,6 +111,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
             fallthrough
         case LETMode.seconds:
             secondLabel.text = secondsString
+            secondLabel.textColor = pickerStyle.styleFontColor
             addSubview(secondLabel)
             updateLabels()
         }
@@ -209,8 +211,15 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         addConstraints([top, bottom, leading, trailing])
     }
     
-    // MARK: - Layout
+    // MARK: Style
+    public struct pickerStyle {
+        static let fontList = UIFont.familyNames()
+        static let styleFontSize:CGFloat = 20
+        static let styleSelectedFont = UIFont(name: fontList[8], size: pickerStyle.styleFontSize) // SD Font
+        static let styleFontColor = UIColor.blueColor()
+    }
     
+      // MARK: - Layout
     private var totalPickerWidth: CGFloat = 0
     private var numberWidth: CGFloat = 20               // Width of UILabel displaying a two digit number with standard font
     private var numberOfComponents = 2 //default for hours, minutes, seconds TODO: Update to 3
@@ -292,6 +301,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
                 // Setup label and add as subview
                 let label = UILabel()
                 label.font = font
+                label.textColor = pickerStyle.styleFontColor
                 label.textAlignment = .Right
                 label.adjustsFontSizeToFitWidth = false
                 label.frame.size = CGSize(width: numberWidth, height: size.height)
