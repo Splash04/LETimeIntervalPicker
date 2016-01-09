@@ -82,8 +82,8 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     
     // MARK: - Initialization
     
-    required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         setup()
     }
     
@@ -216,10 +216,10 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     
     // MARK: Style
     public struct pickerStyle {
-        static let fontList = UIFont.familyNames()
         static let styleFontSize:CGFloat = 20
-        static let styleSelectedFont = UIFont(name: fontList[8], size: pickerStyle.styleFontSize) // SD Font
+        static let styleSelectedFont = UIFont(name: "Apple SD Gothic Neo", size: pickerStyle.styleFontSize) // SD Font
         static let styleFontColor = UIColor.blueColor()
+        
     }
     
       // MARK: - Layout
