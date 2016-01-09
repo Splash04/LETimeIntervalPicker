@@ -60,13 +60,13 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
 
     // Note that setting a font that makes the picker wider
     // than this view can cause layout problems
-    public var font = pickerStyle.styleSelectedFont {
+    public var font:UIFont = pickerStyle.styleSelectedFont! {
         didSet {
             refreshViewAfterFormatChange()
         }
     }
     
-    public var fontColor = pickerStyle.styleFontColor {
+    public var fontColor:UIColor = pickerStyle.styleFontColor {
         didSet {
             refreshViewAfterFormatChange()
         }
@@ -268,7 +268,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     // MARK: - Picker view delegate
     
     public func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        let labelWidth: CGFloat
+        var labelWidth: CGFloat = 0
         switch Components(rawValue: component)! {
         case .Hour:
             labelWidth = hourLabel.bounds.width
