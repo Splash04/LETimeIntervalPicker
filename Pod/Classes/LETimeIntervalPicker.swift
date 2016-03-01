@@ -57,7 +57,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         cleanup() // Hour label doesn't seem to be removed when calling setup so removing them manually here
         setup()
     }
-
+    
     // Note that setting a font that makes the picker wider
     // than this view can cause layout problems
     public var font:UIFont = pickerStyle.styleSelectedFont! {
@@ -91,6 +91,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         super.init(frame: frame)
         setup()
     }
+    
     private func refreshViewAfterFormatChange() {
         updateLabels()
         calculateNumberWidth()
@@ -116,7 +117,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
             hourLabel.text = hoursString
             hourLabel.textColor = fontColor
             if currentMode == LETMode.hoursMinutesSeconds {
-            addSubview(hourLabel)
+                addSubview(hourLabel)
             }
             fallthrough
         case LETMode.minutesSeconds:
@@ -129,7 +130,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
             updateLabels()
         }
         
-       
+        
         
         
     }
@@ -159,7 +160,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     
     func calculateTotalPickerWidth() {
         // Used to position labels
-
+        
         totalPickerWidth = 0
         totalPickerWidth += hourLabel.bounds.width
         totalPickerWidth += minuteLabel.bounds.width
@@ -222,10 +223,10 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         
     }
     
-      // MARK: - Layout
+    // MARK: - Layout
     private var totalPickerWidth: CGFloat = 0
     private var numberWidth: CGFloat = 20               // Width of UILabel displaying a two digit number with standard font
-
+    
     private let standardComponentSpacing: CGFloat = 5   // A UIPickerView has a 5 point space between components
     private let extraComponentSpacing: CGFloat = 10     // Add an additional 10 points between the components
     private let labelSpacing: CGFloat = 5               // Spacing between picker numbers and labels
@@ -235,7 +236,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         
         // Reposition labels
         if currentMode == LETMode.hoursMinutesSeconds {
-        hourLabel.center.y = CGRectGetMidY(pickerView.frame)
+            hourLabel.center.y = CGRectGetMidY(pickerView.frame)
         }
         minuteLabel.center.y = CGRectGetMidY(pickerView.frame)
         secondLabel.center.y = CGRectGetMidY(pickerView.frame)
@@ -338,10 +339,10 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         }
         
         if currentMode == LETMode.minutesSeconds && component == 0 {
-        //don't allow hour to be selected.
+            //don't allow hour to be selected.
         }
         else {
-         sendActionsForControlEvents(.ValueChanged)
+            sendActionsForControlEvents(.ValueChanged)
         }
     }
     
@@ -350,12 +351,12 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     private func setPickerToTimeInterval(interval: NSTimeInterval, animated: Bool) {
         let time = secondsToHoursMinutesSeconds(Int(interval))
         if currentMode == LETMode.hoursMinutesSeconds {
-        pickerView.selectRow(time.hours, inComponent: 0, animated: animated)
-        self.pickerView(pickerView, didSelectRow: time.hours, inComponent: 0)
+            pickerView.selectRow(time.hours, inComponent: 0, animated: animated)
+            self.pickerView(pickerView, didSelectRow: time.hours, inComponent: 0)
         }
         pickerView.selectRow(time.minutes, inComponent: 1, animated: animated)
         pickerView.selectRow(time.seconds, inComponent: 2, animated: animated)
-            self.pickerView(pickerView, didSelectRow: time.minutes, inComponent: 1)
+        self.pickerView(pickerView, didSelectRow: time.minutes, inComponent: 1)
         self.pickerView(pickerView, didSelectRow: time.seconds, inComponent: 2)
     }
     

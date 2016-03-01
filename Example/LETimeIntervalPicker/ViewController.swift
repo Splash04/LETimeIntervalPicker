@@ -14,18 +14,18 @@ class ViewController: UIViewController {
     @IBAction func act_changeMode(sender: AnyObject) {
         switch seg_mode.selectedSegmentIndex {
         case 0:
-            print("hours")
+            print("hours", terminator: "")
             picker.changeMode(LETimeIntervalPicker.LETMode.hoursMinutesSeconds)
             label.text = "Changing Mode"
             break
         case 1:
-            print("minutes")
+            print("minutes", terminator: "")
             picker.changeMode(LETimeIntervalPicker.LETMode.minutesSeconds)
             label.text = "Changing Mode"
             break
         
         default:
-            print("nothing selected")
+            print("nothing selected", terminator: "")
         }
     }
     
