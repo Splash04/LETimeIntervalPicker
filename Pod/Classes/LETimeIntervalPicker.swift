@@ -263,13 +263,15 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     
     public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         let currentComponent = componentsToShow[component]
+        let minutes = (Int) (maxTimeInterval > 3600 ? 60 : maxTimeInterval / 60)
+        let seconds = (Int) (maxTimeInterval > 60 ? 60 : maxTimeInterval)
         switch currentComponent {
         case .Hour:
             return (Int) (maxTimeInterval / 3600)
         case .Minute:
-            return (Int) (maxTimeInterval / 24) / 60
+            return minutes
         case .Second:
-            return 60
+            return seconds
         }
     }
     
