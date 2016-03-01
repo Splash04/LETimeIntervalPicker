@@ -80,6 +80,13 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     private let minuteLabel = UILabel()
     private let secondLabel = UILabel()
     
+    // MARK: - Max Time
+    public var maxTimeInterval : NSTimeInterval = 86400 {
+        didSet {
+            pickerView.reloadAllComponents()
+        }
+    }
+    
     // MARK: - Initialization
     
     required public init?(coder aDecoder: NSCoder) {
@@ -258,9 +265,9 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         let currentComponent = componentsToShow[component]
         switch currentComponent {
         case .Hour:
-            return 24
+            return (Int) (maxTimeInterval / 3600)
         case .Minute:
-            return 60
+            return (Int) (maxTimeInterval / 24) / 60
         case .Second:
             return 60
         }

@@ -10,11 +10,12 @@ import UIKit
 import LETimeIntervalPicker
 
 class TableViewController: UITableViewController {
-
+    
     // MARK: - Outlets & properties
     
     @IBOutlet weak var detailLabel: UILabel!
-
+    
+    @IBOutlet weak var picker: LETimeIntervalPicker!
     var pickerIsVisible = false
     let formatter = NSDateComponentsFormatter()
     
@@ -25,6 +26,7 @@ class TableViewController: UITableViewController {
         
         formatter.unitsStyle = .Abbreviated
         detailLabel.text = formatter.stringFromTimeInterval(0)
+        picker.maxTimeInterval = 43200; // 12h
     }
     
     // MARK: - Table view delegate
