@@ -6,14 +6,14 @@
 
 */
 
-"hours" = "h";
+"hours" = "hours";
 
-"hour" = "h";
+"hour" = "hour";
 
-"minutes" = "min";
+"minutes" = "minutes";
 
-"minute" = "min";
+"minute" = "minute";
 
-"seconds" = "sec";
+"seconds" = "seconds";
 
-"second" = "sec";
+"second" = "second";
