@@ -145,10 +145,13 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     private func updateLabels() {
         
         hourLabel.font = font
+        hourLabel.textColor = fontColor
         hourLabel.sizeToFit()
         minuteLabel.font = font
+        minuteLabel.textColor = fontColor
         minuteLabel.sizeToFit()
         secondLabel.font = font
+        secondLabel.textColor = fontColor
         secondLabel.sizeToFit()
     }
     
