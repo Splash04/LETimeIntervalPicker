@@ -396,25 +396,24 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     
     private func setupLocalizations() {
         
-        let bundle = NSBundle(forClass: LETimeIntervalPicker.self)
         let tableName = "LETimeIntervalPickerLocalizable"
         
-        hoursString = NSLocalizedString("hours", tableName: tableName, bundle: bundle,
+        hoursString = NSLocalizedString("hours", tableName: tableName,
             comment: "The text displayed next to the hours component of the picker.")
         
-        hourString = NSLocalizedString("hour", tableName: tableName, bundle: bundle,
+        hourString = NSLocalizedString("hour", tableName: tableName,
             comment: "A singular alternative for the hours text.")
         
-        minutesString = NSLocalizedString("minutes", tableName: tableName, bundle: bundle,
+        minutesString = NSLocalizedString("minutes", tableName: tableName,
             comment: "The text displayed next to the minutes component of the picker.")
         
-        minuteString = NSLocalizedString("minute", tableName: tableName, bundle: bundle,
+        minuteString = NSLocalizedString("minute", tableName: tableName,
             comment: "A singular alternative for the minutes text.")
         
-        secondsString = NSLocalizedString("seconds", tableName: tableName, bundle: bundle,
+        secondsString = NSLocalizedString("seconds", tableName: tableName,
             comment: "The text displayed next to the seconds component of the picker.")
         
-        secondString = NSLocalizedString("second", tableName: tableName, bundle: bundle,
+        secondString = NSLocalizedString("second", tableName: tableName,
             comment: "A singular alternative for the seconds text.")
     }
 }

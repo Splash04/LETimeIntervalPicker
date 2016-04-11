@@ -74,6 +74,7 @@
 		3097F167380CF4E0E7580EE5 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		327D3117AAE8D49E09B34B23 /* Pods-LETimeIntervalPicker_Example-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LETimeIntervalPicker_Example-environment.h"; sourceTree = "<group>"; };
 		3824E162FCBE1E337F71498F /* Pods_LETimeIntervalPicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LETimeIntervalPicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D09E9F81CBB8C8600269A35 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LETimeIntervalPickerLocalizable.strings; sourceTree = "<group>"; };
 		3DE358A41CA6ACDC0033D72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LETimeIntervalPickerLocalizable.strings; sourceTree = "<group>"; };
 		40B69947109B715E7DFCA898 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		436E9780A32EF1679A416BA1 /* Pods-LETimeIntervalPicker_Tests-LETimeIntervalPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-LETimeIntervalPicker_Tests-LETimeIntervalPicker-umbrella.h"; path = "../Pods-LETimeIntervalPicker_Tests-LETimeIntervalPicker/Pods-LETimeIntervalPicker_Tests-LETimeIntervalPicker-umbrella.h"; sourceTree = "<group>"; };
@@ -478,6 +479,7 @@
 				en,
 				sv,
 				ru,
+				uk,
 			);
 			mainGroup = C055FA39B43E492217F33DEB;
 			productRefGroup = 78ECD75A777491B431DEE95D /* Products */;
@@ -617,6 +619,7 @@
 				83E5E4E11B221B730068CD35 /* en */,
 				83E5E4E31B221B870068CD35 /* sv */,
 				3DE358A41CA6ACDC0033D72E /* ru */,
+				3D09E9F81CBB8C8600269A35 /* uk */,
 			);
 			name = LETimeIntervalPickerLocalizable.strings;
 			path = Assets;
