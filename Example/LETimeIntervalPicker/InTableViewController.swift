@@ -17,28 +17,28 @@ class TableViewController: UITableViewController {
     
     @IBOutlet weak var picker: LETimeIntervalPicker!
     var pickerIsVisible = false
-    let formatter = NSDateComponentsFormatter()
+    let formatter = DateComponentsFormatter()
     
     // MARK: - View controller lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        formatter.unitsStyle = .Abbreviated
-        detailLabel.text = formatter.stringFromTimeInterval(0)
+        formatter.unitsStyle = .abbreviated
+        detailLabel.text = formatter.string(from: 0)
         picker.maxTimeInterval = 43200; // 12h
     }
     
     // MARK: - Table view delegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         tableView.beginUpdates()
         pickerIsVisible = !pickerIsVisible
         tableView.endUpdates()
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 && indexPath.row == 1 {
             if pickerIsVisible {
                 return 216
@@ -51,8 +51,8 @@ class TableViewController: UITableViewController {
     
     // MARK: - Actions
     
-    @IBAction func pickerChanged(sender: LETimeIntervalPicker) {
-        detailLabel.text = formatter.stringFromTimeInterval(sender.timeInterval)
+    @IBAction func pickerChanged(_ sender: LETimeIntervalPicker) {
+        detailLabel.text = formatter.string(from: sender.timeInterval)
     }
     
 }

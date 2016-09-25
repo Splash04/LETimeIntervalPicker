@@ -11,7 +11,7 @@ import LETimeIntervalPicker
 
 class ViewController: UIViewController {
     
-    @IBAction func act_changeMode(sender: AnyObject) {
+    @IBAction func act_changeMode(_ sender: AnyObject) {
         switch seg_mode.selectedSegmentIndex {
         case 0:
             print("hours", terminator: "")
@@ -35,20 +35,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var animated: UISwitch!
     
     @IBOutlet weak var seg_mode: UISegmentedControl!
-    let formatter = NSDateComponentsFormatter()
+    let formatter = DateComponentsFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        formatter.unitsStyle = .Abbreviated
+        formatter.unitsStyle = .abbreviated
     }
     
-    @IBAction func updateLabel(sender: LETimeIntervalPicker) {
-        label.text = formatter.stringFromTimeInterval(sender.timeInterval)
+    @IBAction func updateLabel(_ sender: LETimeIntervalPicker) {
+        label.text = formatter.string(from: sender.timeInterval)
     }
     
     @IBAction func setRandomTimeInterval() {
-        let random = NSTimeInterval(arc4random_uniform(60*60*24)) // Random time under 24 hours
-        if animated.on {
+        let random = TimeInterval(arc4random_uniform(60*60*24)) // Random time under 24 hours
+        if animated.isOn {
             picker.setTimeIntervalAnimated(random)
         } else {
             picker.timeInterval = random

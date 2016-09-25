@@ -8,38 +8,38 @@
 
 import UIKit
 
-public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerViewDelegate {
+open class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerViewDelegate {
     
     // MARK: - Public API
     
-    public var timeInterval: NSTimeInterval {
+    open var timeInterval: TimeInterval {
         get {
-            let hours = pickerView.selectedRowInComponent(0) * 60 * 60
-            let minutes = pickerView.selectedRowInComponent(1) * 60
-            let seconds = pickerView.selectedRowInComponent(2)
-            return NSTimeInterval(hours + minutes + seconds)
+            let hours = pickerView.selectedRow(inComponent: 0) * 60 * 60
+            let minutes = pickerView.selectedRow(inComponent: 1) * 60
+            let seconds = pickerView.selectedRow(inComponent: 2)
+            return TimeInterval(hours + minutes + seconds)
         }
         set {
             setPickerToTimeInterval(newValue, animated: false)
         }
     }
     
-    public var timeIntervalAsHoursMinutesSeconds: (hours: Int, minutes: Int, seconds: Int) {
+    open var timeIntervalAsHoursMinutesSeconds: (hours: Int, minutes: Int, seconds: Int) {
         get {
             return secondsToHoursMinutesSeconds(Int(timeInterval))
         }
     }
-    public var timeIntervalAsMinutesSeconds: (minutes: Int, seconds: Int) {
+    open var timeIntervalAsMinutesSeconds: (minutes: Int, seconds: Int) {
         get {
             return secondsToMinutesSeconds(Int(timeInterval))
         }
     }
-    public func setTimeIntervalAnimated(interval: NSTimeInterval) {
+    open func setTimeIntervalAnimated(_ interval: TimeInterval) {
         setPickerToTimeInterval(interval, animated: true)
     }
     
-    public func resetTimetoZero(animated: Bool) {
-        setPickerToTimeInterval(NSTimeInterval(0), animated: animated)
+    open func resetTimetoZero(_ animated: Bool) {
+        setPickerToTimeInterval(TimeInterval(0), animated: animated)
     }
     
     //Mark: Change Timer Mode Methods
@@ -49,10 +49,10 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     }
     
     // Managing the current Mode for the Picker
-    public var currentMode = LETMode.hoursMinutesSeconds // Default Mode
+    open var currentMode = LETMode.hoursMinutesSeconds // Default Mode
     
-    private var componentsToShow:[Components] = [Components.Hour,Components.Minute, Components.Second]
-    public func changeMode(newMode : LETMode) {
+    fileprivate var componentsToShow:[Components] = [Components.hour,Components.minute, Components.second]
+    open func changeMode(_ newMode : LETMode) {
         currentMode = newMode
         cleanup() // Hour label doesn't seem to be removed when calling setup so removing them manually here
         setup()
@@ -60,13 +60,13 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     
     // Note that setting a font that makes the picker wider
     // than this view can cause layout problems
-    public var font:UIFont = pickerStyle.styleSelectedFont! {
+    open var font:UIFont = pickerStyle.styleSelectedFont! {
         didSet {
             refreshViewAfterFormatChange()
         }
     }
     
-    public var fontColor:UIColor = pickerStyle.styleFontColor {
+    open var fontColor:UIColor = pickerStyle.styleFontColor {
         didSet {
             refreshViewAfterFormatChange()
         }
@@ -74,14 +74,14 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     
     // MARK: - UI Components
     
-    private let pickerView = UIPickerView()
+    fileprivate let pickerView = UIPickerView()
     
-    private let hourLabel = UILabel()
-    private let minuteLabel = UILabel()
-    private let secondLabel = UILabel()
+    fileprivate let hourLabel = UILabel()
+    fileprivate let minuteLabel = UILabel()
+    fileprivate let secondLabel = UILabel()
     
     // MARK: - Max Time
-    public var maxTimeInterval : NSTimeInterval = 86400 {
+    open var maxTimeInterval : TimeInterval = 86400 {
         didSet {
             pickerView.reloadAllComponents()
         }
@@ -99,26 +99,26 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         setup()
     }
     
-    private func refreshViewAfterFormatChange() {
+    fileprivate func refreshViewAfterFormatChange() {
         updateLabels()
         calculateNumberWidth()
         calculateTotalPickerWidth()
         pickerView.reloadAllComponents()
     }
-    private func setup() {
+    fileprivate func setup() {
         setupLocalizations()
         setupLabels()
         calculateNumberWidth()
         calculateTotalPickerWidth()
         setupPickerView()
     }
-    private func cleanup() {
+    fileprivate func cleanup() {
         hourLabel.removeFromSuperview()
         minuteLabel.removeFromSuperview()
         secondLabel.removeFromSuperview()
         resetTimetoZero(true)
     }
-    private func setupLabels() {
+    fileprivate func setupLabels() {
         switch currentMode {
         case LETMode.hoursMinutesSeconds :
             hourLabel.text = hoursString
@@ -142,7 +142,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         
     }
     
-    private func updateLabels() {
+    fileprivate func updateLabels() {
         
         hourLabel.font = font
         hourLabel.textColor = fontColor
@@ -155,7 +155,7 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         secondLabel.sizeToFit()
     }
     
-    private func calculateNumberWidth() {
+    fileprivate func calculateNumberWidth() {
         let label = UILabel()
         label.font = font
         numberWidth = 0
@@ -191,34 +191,34 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         
         // Size picker view to fit self
         let top = NSLayoutConstraint(item: pickerView,
-            attribute: .Top,
-            relatedBy: .Equal,
+            attribute: .top,
+            relatedBy: .equal,
             toItem: self,
-            attribute: .Top,
+            attribute: .top,
             multiplier: 1,
             constant: 0)
         
         let bottom = NSLayoutConstraint(item: pickerView,
-            attribute: .Bottom,
-            relatedBy: .Equal,
+            attribute: .bottom,
+            relatedBy: .equal,
             toItem: self,
-            attribute: .Bottom,
+            attribute: .bottom,
             multiplier: 1,
             constant: 0)
         
         let leading = NSLayoutConstraint(item: pickerView,
-            attribute: .Leading,
-            relatedBy: .Equal,
+            attribute: .leading,
+            relatedBy: .equal,
             toItem: self,
-            attribute: .Leading,
+            attribute: .leading,
             multiplier: 1,
             constant: 0)
         
         let trailing = NSLayoutConstraint(item: pickerView,
-            attribute: .Trailing,
-            relatedBy: .Equal,
+            attribute: .trailing,
+            relatedBy: .equal,
             toItem: self,
-            attribute: .Trailing,
+            attribute: .trailing,
             multiplier: 1,
             constant: 0)
         
@@ -229,89 +229,89 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
     public struct pickerStyle {
         static let styleFontSize:CGFloat = 20
         static let styleSelectedFont = UIFont(name: "Apple SD Gothic Neo", size: pickerStyle.styleFontSize) // SD Font
-        static let styleFontColor = UIColor.blueColor()
+        static let styleFontColor = UIColor.blue
         
     }
     
     // MARK: - Layout
-    private var totalPickerWidth: CGFloat = 0
-    private var numberWidth: CGFloat = 20               // Width of UILabel displaying a two digit number with standard font
+    fileprivate var totalPickerWidth: CGFloat = 0
+    fileprivate var numberWidth: CGFloat = 20               // Width of UILabel displaying a two digit number with standard font
     
-    private let standardComponentSpacing: CGFloat = 5   // A UIPickerView has a 5 point space between components
-    private let extraComponentSpacing: CGFloat = 10     // Add an additional 10 points between the components
-    private let labelSpacing: CGFloat = 5               // Spacing between picker numbers and labels
+    fileprivate let standardComponentSpacing: CGFloat = 5   // A UIPickerView has a 5 point space between components
+    fileprivate let extraComponentSpacing: CGFloat = 10     // Add an additional 10 points between the components
+    fileprivate let labelSpacing: CGFloat = 5               // Spacing between picker numbers and labels
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         
         // Reposition labels
         if currentMode == LETMode.hoursMinutesSeconds {
-            hourLabel.center.y = CGRectGetMidY(pickerView.frame)
+            hourLabel.center.y = pickerView.frame.midY
         }
-        minuteLabel.center.y = CGRectGetMidY(pickerView.frame)
-        secondLabel.center.y = CGRectGetMidY(pickerView.frame)
+        minuteLabel.center.y = pickerView.frame.midY
+        secondLabel.center.y = pickerView.frame.midY
         
-        let pickerMinX = CGRectGetMidX(bounds) - totalPickerWidth / 2
+        let pickerMinX = bounds.midX - totalPickerWidth / 2
         hourLabel.frame.origin.x = pickerMinX + numberWidth + labelSpacing
         let space = standardComponentSpacing + extraComponentSpacing + numberWidth + labelSpacing
-        minuteLabel.frame.origin.x = CGRectGetMaxX(hourLabel.frame) + space
-        secondLabel.frame.origin.x = CGRectGetMaxX(minuteLabel.frame) + space
+        minuteLabel.frame.origin.x = hourLabel.frame.maxX + space
+        secondLabel.frame.origin.x = minuteLabel.frame.maxX + space
     }
     
     // MARK: - Picker view data source
     
-    public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    open func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
     }
     
-    public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    open func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         let currentComponent = componentsToShow[component]
         let minutes = (Int) (maxTimeInterval > 3600 ? 60 : maxTimeInterval / 60)
         let seconds = (Int) (maxTimeInterval > 60 ? 60 : maxTimeInterval)
         switch currentComponent {
-        case .Hour:
+        case .hour:
             return (Int) (maxTimeInterval / 3600)
-        case .Minute:
+        case .minute:
             return minutes
-        case .Second:
+        case .second:
             return seconds
         }
     }
     
     // MARK: - Picker view delegate
     
-    public func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+    open func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         var labelWidth: CGFloat = 0
         switch Components(rawValue: component)! {
-        case .Hour:
+        case .hour:
             labelWidth = hourLabel.bounds.width
             
-        case .Minute:
+        case .minute:
             labelWidth = minuteLabel.bounds.width
-        case .Second:
+        case .second:
             labelWidth = secondLabel.bounds.width
         }
         return numberWidth + labelWidth + labelSpacing + extraComponentSpacing
     }
     
-    public func pickerView(pickerView: UIPickerView,
+    open func pickerView(_ pickerView: UIPickerView,
         viewForRow row: Int,
         forComponent component: Int,
-        reusingView view: UIView?) -> UIView {
+        reusing view: UIView?) -> UIView {
             
             // Check if view can be reused
             var newView = view
             
             if newView == nil {
                 // Create new view
-                let size = pickerView.rowSizeForComponent(component)
+                let size = pickerView.rowSize(forComponent: component)
                 newView = UIView(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
                 
                 // Setup label and add as subview
                 let label = UILabel()
                 label.font = font
                 label.textColor = fontColor
-                label.textAlignment = .Right
+                label.textAlignment = .right
                 label.adjustsFontSizeToFitWidth = false
                 label.frame.size = CGSize(width: numberWidth, height: size.height)
                 newView!.addSubview(label)
@@ -327,25 +327,25 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
             return newView!
     }
     
-    public func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row == 1 {
             // Change label to singular
             switch Components(rawValue: component)! {
-            case .Hour:
+            case .hour:
                 hourLabel.text = hourString
-            case .Minute:
+            case .minute:
                 minuteLabel.text = minuteString
-            case .Second:
+            case .second:
                 secondLabel.text = secondString
             }
         } else {
             // Change label to plural
             switch Components(rawValue: component)! {
-            case .Hour:
+            case .hour:
                 hourLabel.text = hoursString
-            case .Minute:
+            case .minute:
                 minuteLabel.text = minutesString
-            case .Second:
+            case .second:
                 secondLabel.text = secondsString
             }
         }
@@ -354,13 +354,13 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
             //don't allow hour to be selected.
         }
         else {
-            sendActionsForControlEvents(.ValueChanged)
+            sendActions(for: .valueChanged)
         }
     }
     
     // MARK: - Helpers
     
-    private func setPickerToTimeInterval(interval: NSTimeInterval, animated: Bool) {
+    fileprivate func setPickerToTimeInterval(_ interval: TimeInterval, animated: Bool) {
         let time = secondsToHoursMinutesSeconds(Int(interval))
         if currentMode == LETMode.hoursMinutesSeconds {
             pickerView.selectRow(time.hours, inComponent: 0, animated: animated)
@@ -372,31 +372,31 @@ public class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerVi
         self.pickerView(pickerView, didSelectRow: time.seconds, inComponent: 2)
     }
     
-    private func secondsToHoursMinutesSeconds(seconds : Int) -> (hours: Int, minutes: Int, seconds: Int) {
+    fileprivate func secondsToHoursMinutesSeconds(_ seconds : Int) -> (hours: Int, minutes: Int, seconds: Int) {
         return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
-    private func secondsToMinutesSeconds(seconds : Int) -> (minutes: Int, seconds: Int) {
+    fileprivate func secondsToMinutesSeconds(_ seconds : Int) -> (minutes: Int, seconds: Int) {
         return ((seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
-    private enum Components: Int {
-        case Hour = 0
-        case Minute = 1
-        case Second = 2
+    fileprivate enum Components: Int {
+        case hour = 0
+        case minute = 1
+        case second = 2
     }
     
     // MARK: - Localization
     
-    private var hoursString     = "hours"
-    private var hourString      = "hour"
-    private var minutesString   = "minutes"
-    private var minuteString    = "minute"
-    private var secondsString   = "seconds"
-    private var secondString    = "second"
+    fileprivate var hoursString     = "hours"
+    fileprivate var hourString      = "hour"
+    fileprivate var minutesString   = "minutes"
+    fileprivate var minuteString    = "minute"
+    fileprivate var secondsString   = "seconds"
+    fileprivate var secondString    = "second"
     
-    private func setupLocalizations() {
+    fileprivate func setupLocalizations() {
         
-        let bundle = NSBundle(forClass: LETimeIntervalPicker.self)
+        let bundle = Bundle(for: LETimeIntervalPicker.self)
         let tableName = "LETimeIntervalPicker.bundle/LETimeIntervalPickerLocalizable"
         
         hoursString = NSLocalizedString("hours", tableName: tableName, bundle: bundle,
