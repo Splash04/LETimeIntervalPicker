@@ -12,7 +12,7 @@ open class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerView
     
     // MARK: - Public API
     
-    open var timeInterval: TimeInterval {
+    @objc open var timeInterval: TimeInterval {
         get {
             let hours = pickerView.selectedRow(inComponent: 0) * 60 * 60
             let minutes = pickerView.selectedRow(inComponent: 1) * 60
@@ -24,21 +24,21 @@ open class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerView
         }
     }
     
-    open var timeIntervalAsHoursMinutesSeconds: (hours: Int, minutes: Int, seconds: Int) {
+    @objc open var timeIntervalAsHoursMinutesSeconds: (hours: Int, minutes: Int, seconds: Int) {
         get {
             return secondsToHoursMinutesSeconds(Int(timeInterval))
         }
     }
-    open var timeIntervalAsMinutesSeconds: (minutes: Int, seconds: Int) {
+    @objc open var timeIntervalAsMinutesSeconds: (minutes: Int, seconds: Int) {
         get {
             return secondsToMinutesSeconds(Int(timeInterval))
         }
     }
-    open func setTimeIntervalAnimated(_ interval: TimeInterval) {
+    @objc open func setTimeIntervalAnimated(_ interval: TimeInterval) {
         setPickerToTimeInterval(interval, animated: true)
     }
     
-    open func resetTimetoZero(_ animated: Bool) {
+    @objc open func resetTimetoZero(_ animated: Bool) {
         setPickerToTimeInterval(TimeInterval(0), animated: animated)
     }
     
@@ -49,7 +49,7 @@ open class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerView
     }
     
     // Managing the current Mode for the Picker
-    open var currentMode = LETMode.hoursMinutesSeconds // Default Mode
+    @objc open var currentMode = LETMode.hoursMinutesSeconds // Default Mode
     
     fileprivate var componentsToShow:[Components] = [Components.hour,Components.minute, Components.second]
     open func changeMode(_ newMode : LETMode) {
@@ -60,13 +60,13 @@ open class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerView
     
     // Note that setting a font that makes the picker wider
     // than this view can cause layout problems
-    open var font:UIFont = pickerStyle.styleSelectedFont! {
+    @objc open var font:UIFont = pickerStyle.styleSelectedFont! {
         didSet {
             refreshViewAfterFormatChange()
         }
     }
     
-    open var fontColor:UIColor = pickerStyle.styleFontColor {
+    @objc open var fontColor:UIColor = pickerStyle.styleFontColor {
         didSet {
             refreshViewAfterFormatChange()
         }
@@ -81,7 +81,7 @@ open class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerView
     fileprivate let secondLabel = UILabel()
     
     // MARK: - Max Time
-    open var maxTimeInterval : TimeInterval = 86400 {
+    @objc open var maxTimeInterval : TimeInterval = 86400 {
         didSet {
             pickerView.reloadAllComponents()
         }
