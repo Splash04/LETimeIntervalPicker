@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerViewDelegate {
+@objc open class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerViewDelegate {
     
     // MARK: - Public API
     
@@ -24,12 +24,12 @@ open class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerView
         }
     }
     
-    @objc open var timeIntervalAsHoursMinutesSeconds: (hours: Int, minutes: Int, seconds: Int) {
+    open var timeIntervalAsHoursMinutesSeconds: (hours: Int, minutes: Int, seconds: Int) {
         get {
             return secondsToHoursMinutesSeconds(Int(timeInterval))
         }
     }
-    @objc open var timeIntervalAsMinutesSeconds: (minutes: Int, seconds: Int) {
+    open var timeIntervalAsMinutesSeconds: (minutes: Int, seconds: Int) {
         get {
             return secondsToMinutesSeconds(Int(timeInterval))
         }
@@ -43,7 +43,7 @@ open class LETimeIntervalPicker: UIControl, UIPickerViewDataSource, UIPickerView
     }
     
     //Mark: Change Timer Mode Methods
-    public enum LETMode:Int {
+    @objc public enum LETMode:Int {
         case hoursMinutesSeconds = 3
         case minutesSeconds = 2
     }
