@@ -202,36 +202,36 @@ import UIKit
         
         // Size picker view to fit self
         let top = NSLayoutConstraint(item: pickerView,
-            attribute: .top,
-            relatedBy: .equal,
-            toItem: self,
-            attribute: .top,
-            multiplier: 1,
-            constant: 0)
+                                     attribute: .top,
+                                     relatedBy: .equal,
+                                     toItem: self,
+                                     attribute: .top,
+                                     multiplier: 1,
+                                     constant: 0)
         
         let bottom = NSLayoutConstraint(item: pickerView,
-            attribute: .bottom,
-            relatedBy: .equal,
-            toItem: self,
-            attribute: .bottom,
-            multiplier: 1,
-            constant: 0)
+                                        attribute: .bottom,
+                                        relatedBy: .equal,
+                                        toItem: self,
+                                        attribute: .bottom,
+                                        multiplier: 1,
+                                        constant: 0)
         
         let leading = NSLayoutConstraint(item: pickerView,
-            attribute: .leading,
-            relatedBy: .equal,
-            toItem: self,
-            attribute: .leading,
-            multiplier: 1,
-            constant: 0)
+                                         attribute: .leading,
+                                         relatedBy: .equal,
+                                         toItem: self,
+                                         attribute: .leading,
+                                         multiplier: 1,
+                                         constant: 0)
         
         let trailing = NSLayoutConstraint(item: pickerView,
-            attribute: .trailing,
-            relatedBy: .equal,
-            toItem: self,
-            attribute: .trailing,
-            multiplier: 1,
-            constant: 0)
+                                          attribute: .trailing,
+                                          relatedBy: .equal,
+                                          toItem: self,
+                                          attribute: .trailing,
+                                          multiplier: 1,
+                                          constant: 0)
         
         addConstraints([top, bottom, leading, trailing])
     }
@@ -277,7 +277,7 @@ import UIKit
     }
     
     open func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        guard let currentComponent = componentsToShow.at(index: component) else { return 0 }
+        let currentComponent = componentsToShow[component]
         let minutes = (Int) (maxTimeInterval > 3600 ? 60 : maxTimeInterval / 60)
         let seconds = (Int) (maxTimeInterval > 60 ? 60 : maxTimeInterval)
         switch currentComponent {
@@ -306,36 +306,36 @@ import UIKit
     }
     
     open func pickerView(_ pickerView: UIPickerView,
-        viewForRow row: Int,
-        forComponent component: Int,
-        reusing view: UIView?) -> UIView {
+                         viewForRow row: Int,
+                         forComponent component: Int,
+                         reusing view: UIView?) -> UIView {
+        
+        // Check if view can be reused
+        var newView = view
+        
+        if newView == nil {
+            // Create new view
+            let size = pickerView.rowSize(forComponent: component)
+            newView = UIView(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
             
-            // Check if view can be reused
-            var newView = view
-            
-            if newView == nil {
-                // Create new view
-                let size = pickerView.rowSize(forComponent: component)
-                newView = UIView(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
-                
-                // Setup label and add as subview
-                let label = UILabel()
-                label.font = font
-                label.textColor = fontColor
-                label.textAlignment = .right
-                label.adjustsFontSizeToFitWidth = false
-                label.frame.size = CGSize(width: numberWidth, height: size.height)
-                newView!.addSubview(label)
-            }
-            
-            let label = newView!.subviews.first as! UILabel
-            if currentMode == LETMode.minutesSeconds && component == 0 {
-            }
-            else {
-                label.text = "\(row)"
-            }
-            
-            return newView!
+            // Setup label and add as subview
+            let label = UILabel()
+            label.font = font
+            label.textColor = fontColor
+            label.textAlignment = .right
+            label.adjustsFontSizeToFitWidth = false
+            label.frame.size = CGSize(width: numberWidth, height: size.height)
+            newView!.addSubview(label)
+        }
+        
+        let label = newView!.subviews.first as! UILabel
+        if currentMode == LETMode.minutesSeconds && component == 0 {
+        }
+        else {
+            label.text = "\(row)"
+        }
+        
+        return newView!
     }
     
     open func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -430,21 +430,22 @@ import UIKit
         let tableName = "LETimeIntervalPicker.bundle/LETimeIntervalPickerLocalizable"
         
         hoursString = NSLocalizedString("hours", tableName: tableName, bundle: bundle,
-            comment: "The text displayed next to the hours component of the picker.")
+                                        comment: "The text displayed next to the hours component of the picker.")
         
         hourString = NSLocalizedString("hour", tableName: tableName, bundle: bundle,
-            comment: "A singular alternative for the hours text.")
+                                       comment: "A singular alternative for the hours text.")
         
         minutesString = NSLocalizedString("minutes", tableName: tableName, bundle: bundle,
-            comment: "The text displayed next to the minutes component of the picker.")
+                                          comment: "The text displayed next to the minutes component of the picker.")
         
         minuteString = NSLocalizedString("minute", tableName: tableName, bundle: bundle,
-            comment: "A singular alternative for the minutes text.")
+                                         comment: "A singular alternative for the minutes text.")
         
         secondsString = NSLocalizedString("seconds", tableName: tableName, bundle: bundle,
-            comment: "The text displayed next to the seconds component of the picker.")
+                                          comment: "The text displayed next to the seconds component of the picker.")
         
         secondString = NSLocalizedString("second", tableName: tableName, bundle: bundle,
-            comment: "A singular alternative for the seconds text.")
+                                         comment: "A singular alternative for the seconds text.")
     }
 }
+
