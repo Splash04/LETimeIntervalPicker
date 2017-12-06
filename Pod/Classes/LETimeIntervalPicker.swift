@@ -46,10 +46,11 @@ import UIKit
     @objc public enum LETMode:Int {
         case hoursMinutesSeconds = 3
         case minutesSeconds = 2
+        case hoursMinutes = 1
     }
     
     // Managing the current Mode for the Picker
-    @objc open var currentMode = LETMode.hoursMinutesSeconds // Default Mode
+    @objc open var currentMode = LETMode.hoursMinutes // Default Mode
     
     fileprivate var componentsToShow:[Components] = [Components.hour,Components.minute, Components.second]
     open func changeMode(_ newMode : LETMode) {
@@ -60,7 +61,7 @@ import UIKit
     
     // Note that setting a font that makes the picker wider
     // than this view can cause layout problems
-    @objc open var font:UIFont = pickerStyle.styleSelectedFont! {
+    @objc open var font:UIFont = pickerStyle.styleSelectedFont {
         didSet {
             refreshViewAfterFormatChange()
         }
@@ -123,9 +124,7 @@ import UIKit
         case LETMode.hoursMinutesSeconds :
             hourLabel.text = hoursString
             hourLabel.textColor = fontColor
-            if currentMode == LETMode.hoursMinutesSeconds {
-                addSubview(hourLabel)
-            }
+            addSubview(hourLabel)
             fallthrough
         case LETMode.minutesSeconds:
             minuteLabel.text = minutesString
@@ -135,15 +134,19 @@ import UIKit
             secondLabel.textColor = fontColor
             addSubview(secondLabel)
             updateLabels()
+            break
+        case LETMode.hoursMinutes:
+            hourLabel.text = hoursString
+            hourLabel.textColor = fontColor
+            addSubview(hourLabel)
+            minuteLabel.text = minutesString
+            minuteLabel.textColor = fontColor
+            addSubview(minuteLabel)
+            updateLabels()
         }
-        
-        
-        
-        
     }
     
     fileprivate func updateLabels() {
-        
         hourLabel.font = font
         hourLabel.textColor = fontColor
         hourLabel.sizeToFit()
@@ -170,17 +173,25 @@ import UIKit
     
     func calculateTotalPickerWidth() {
         // Used to position labels
-        
         totalPickerWidth = 0
-        totalPickerWidth += hourLabel.bounds.width
+        if currentMode != .minutesSeconds {
+            totalPickerWidth += hourLabel.bounds.width
+        }
         totalPickerWidth += minuteLabel.bounds.width
-        totalPickerWidth += secondLabel.bounds.width
-        
-        
-        totalPickerWidth += standardComponentSpacing * 2
-        totalPickerWidth += extraComponentSpacing * 3
-        totalPickerWidth += labelSpacing * 3
-        totalPickerWidth += numberWidth * 3
+        if currentMode != .hoursMinutes {
+            totalPickerWidth += secondLabel.bounds.width
+        }
+        if currentMode == .hoursMinutesSeconds {
+            totalPickerWidth += standardComponentSpacing * 2
+            totalPickerWidth += extraComponentSpacing * 3
+            totalPickerWidth += labelSpacing * 3
+            totalPickerWidth += numberWidth * 3
+        } else {
+            totalPickerWidth += standardComponentSpacing
+            totalPickerWidth += extraComponentSpacing * 2
+            totalPickerWidth += labelSpacing * 2
+            totalPickerWidth += numberWidth * 2
+        }
     }
     
     func setupPickerView() {
@@ -230,7 +241,6 @@ import UIKit
         static let styleFontSize:CGFloat = 20
         static let styleSelectedFont = UIFont(name: "Apple SD Gothic Neo", size: pickerStyle.styleFontSize) // SD Font
         static let styleFontColor = UIColor.blue
-        
     }
     
     // MARK: - Layout
@@ -245,11 +255,13 @@ import UIKit
         super.layoutSubviews()
         
         // Reposition labels
-        if currentMode == LETMode.hoursMinutesSeconds {
+        if currentMode != .minutesSeconds {
             hourLabel.center.y = pickerView.frame.midY
         }
         minuteLabel.center.y = pickerView.frame.midY
-        secondLabel.center.y = pickerView.frame.midY
+        if currentMode != .hoursMinutes {
+            secondLabel.center.y = pickerView.frame.midY
+        }
         
         let pickerMinX = bounds.midX - totalPickerWidth / 2
         hourLabel.frame.origin.x = pickerMinX + numberWidth + labelSpacing
@@ -261,11 +273,11 @@ import UIKit
     // MARK: - Picker view data source
     
     open func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
+        return currentMode == .hoursMinutesSeconds ? 3 : 2
     }
     
     open func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        let currentComponent = componentsToShow[component]
+        guard let currentComponent = componentsToShow.at(index: component) else { return 0 }
         let minutes = (Int) (maxTimeInterval > 3600 ? 60 : maxTimeInterval / 60)
         let seconds = (Int) (maxTimeInterval > 60 ? 60 : maxTimeInterval)
         switch currentComponent {
@@ -285,7 +297,6 @@ import UIKit
         switch Components(rawValue: component)! {
         case .hour:
             labelWidth = hourLabel.bounds.width
-            
         case .minute:
             labelWidth = minuteLabel.bounds.width
         case .second:
@@ -327,6 +338,14 @@ import UIKit
             return newView!
     }
     
+    open func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let titleData = "\(row)"
+        let myTitle = NSAttributedString(string: titleData,
+                                         attributes: [NSFontAttributeName: font,
+                                                      NSForegroundColorAttributeName: fontColor])
+        return myTitle
+    }
+    
     open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row == 1 {
             // Change label to singular
@@ -362,14 +381,16 @@ import UIKit
     
     fileprivate func setPickerToTimeInterval(_ interval: TimeInterval, animated: Bool) {
         let time = secondsToHoursMinutesSeconds(Int(interval))
-        if currentMode == LETMode.hoursMinutesSeconds {
+        if currentMode != LETMode.minutesSeconds {
             pickerView.selectRow(time.hours, inComponent: 0, animated: animated)
             self.pickerView(pickerView, didSelectRow: time.hours, inComponent: 0)
         }
         pickerView.selectRow(time.minutes, inComponent: 1, animated: animated)
-        pickerView.selectRow(time.seconds, inComponent: 2, animated: animated)
         self.pickerView(pickerView, didSelectRow: time.minutes, inComponent: 1)
-        self.pickerView(pickerView, didSelectRow: time.seconds, inComponent: 2)
+        if currentMode != LETMode.hoursMinutes {
+            pickerView.selectRow(time.seconds, inComponent: 2, animated: animated)
+            self.pickerView(pickerView, didSelectRow: time.seconds, inComponent: 2)
+        }
     }
     
     fileprivate func secondsToHoursMinutesSeconds(_ seconds : Int) -> (hours: Int, minutes: Int, seconds: Int) {
@@ -383,6 +404,15 @@ import UIKit
         case hour = 0
         case minute = 1
         case second = 2
+    }
+    
+    public func getSetectedInterval() -> Int {
+        guard pickerView.numberOfComponents > 1 else {
+            return 0
+        }
+        let hours = pickerView.selectedRow(inComponent: 0)
+        let minutes = pickerView.selectedRow(inComponent: 1)
+        return (hours * 60) + minutes
     }
     
     // MARK: - Localization
