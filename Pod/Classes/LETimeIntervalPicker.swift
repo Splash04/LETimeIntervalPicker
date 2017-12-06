@@ -61,7 +61,7 @@ import UIKit
     
     // Note that setting a font that makes the picker wider
     // than this view can cause layout problems
-    @objc open var font:UIFont = pickerStyle.styleSelectedFont {
+    @objc open var font:UIFont = pickerStyle.styleSelectedFont! {
         didSet {
             refreshViewAfterFormatChange()
         }
